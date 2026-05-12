@@ -10,6 +10,7 @@ Run with:
 """
 
 import logging
+import requests
 import os
 import tempfile
 from pathlib import Path
@@ -262,7 +263,56 @@ async def full_analysis(
         job_match=job_match,
     )
 
+@app.get("/search-jobs")
+def search_jobs(role: str, location: str = "India"):
 
+    app_id = os.getenv("ADZUNA_APP_ID")
+    app_key = os.getenv("ADZUNA_APP_KEY")
+
+    if not app_id or not app_key:
+        raise HTTPException(
+            status_code=500,
+            detail="Adzuna API keys not configured"
+        )
+
+    url = (
+        f"https://api.adzuna.com/v1/api/jobs/in/search/1"
+        f"?app_id={app_id}"
+        f"&app_key={app_key}"
+        f"&what={role}"
+        f"&where={location}"
+        f"&results_per_page=10"
+    )
+
+    try:
+        response = requests.get(url)
+
+        if response.status_code != 200:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to fetch jobs"
+            )
+
+        data = response.json()
+
+        jobs = []
+
+        for job in data.get("results", []):
+
+            jobs.append({
+                "title": job.get("title"),
+                "company": job.get("company", {}).get("display_name"),
+                "location": job.get("location", {}).get("display_name"),
+                "description": job.get("description")
+            })
+
+        return {"jobs": jobs}
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
 # ─── Run ──────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
