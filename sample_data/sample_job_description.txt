@@ -1,0 +1,29 @@
+Senior Python Backend Engineer — TechCorp
+
+About the Role:
+We are looking for a talented Senior Python Engineer to join our growing backend team.
+You will design and build scalable microservices, mentor junior engineers, and collaborate
+closely with product and data teams.
+
+Requirements:
+- 5+ years of professional Python development experience
+- Strong expertise in Django or FastAPI for building RESTful APIs
+- Proficiency with PostgreSQL — query optimization, schema design, migrations
+- Experience with Redis for caching and queuing
+- Docker and Kubernetes for containerization and orchestration
+- CI/CD experience (GitHub Actions, Jenkins, or similar)
+- Understanding of software design patterns (SOLID, DDD, clean architecture)
+- Strong communication skills and experience working in Agile teams
+
+Preferred / Nice to Have:
+- AWS (EC2, RDS, S3, Lambda) or GCP experience
+- GraphQL API design
+- TypeScript / Node.js for lightweight services
+- Experience with Celery or message queues (RabbitMQ, Kafka)
+- Prior experience in fintech, healthcare, or SaaS B2B
+
+What We Offer:
+- Competitive salary ($140k–$180k)
+- Remote-first culture
+- Equity package
+- Learning and development budget

@@ -1,0 +1,19 @@
+# Core LLM & LangChain
+langchain==0.3.25
+langchain-groq==0.3.2
+langchain-community==0.3.24
+
+# PDF Parsing
+pdfplumber==0.11.6
+pypdf==5.4.0
+
+# API Framework
+fastapi==0.115.12
+uvicorn==0.34.2
+python-multipart==0.0.20
+
+# Data Validation & Structured Output
+pydantic==2.11.4
+
+# Environment & Utilities
+python-dotenv==1.1.0
