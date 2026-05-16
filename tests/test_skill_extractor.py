@@ -1,7 +1,7 @@
 """
 test_skill_extractor.py — Tests for US-04: Skill Extraction
 
-Uses unittest.mock to avoid real OpenAI API calls during testing.
+Uses unittest.mock to avoid real Groq API calls during testing.
 Run with: pytest tests/ -v
 """
 
@@ -63,7 +63,7 @@ MOCK_SKILLS_RESPONSE = ExtractedSkills(
 
 class TestSkillExtractor:
 
-    @patch("skill_extractor.ChatOpenAI")
+    @patch("skill_extractor.ChatGroq")
     def test_extract_returns_extracted_skills_model(self, mock_llm_class):
         """Extraction should return a valid ExtractedSkills Pydantic model."""
         mock_chain_result = MagicMock()

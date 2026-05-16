@@ -85,10 +85,10 @@ Then visit `http://localhost:3000`
 
 ## 🔑 API Keys Required
 
-- **OpenAI API Key** — Get from [platform.openai.com](https://platform.openai.com)
-  - Set as `OPENAI_API_KEY` in `.env`
+- **Groq API Key** — Get from [console.groq.com/keys](https://console.groq.com/keys)
+  - Set as `GROQ_API_KEY` in `.env`
 
-> 💡 **Alternative**: You can swap in any LangChain-compatible LLM (Anthropic Claude, Groq, etc.) by changing the model in `backend/skill_extractor.py`
+> 💡 The project uses Groq's ultra-fast inference with the `llama-3.3-70b-versatile` model by default. You can change the model in `.env`.
 
 ## 📡 API Endpoints
 
@@ -124,10 +124,10 @@ Job Description ────────────→ Semantic Matching → AT
 ```
 
 ### Key LangChain Components Used
-- `ChatOpenAI` — LLM backbone
+- `ChatGroq` — LLM backbone (Groq API for ultra-fast inference)
 - `PydanticOutputParser` — Structured output parsing
 - `PromptTemplate` — Engineered prompts for skill extraction
-- `LLMChain` — Composing extraction and matching pipelines
+- LCEL (LangChain Expression Language) — Composing extraction and matching pipelines
 
 ## 👥 Team Handoff Notes
 

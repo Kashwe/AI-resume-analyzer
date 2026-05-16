@@ -19,7 +19,7 @@ from langchain_groq import ChatGroq
 
 from models import ExtractedSkills
 
-load_dotenv()
+load_dotenv(override=True)
 logger = logging.getLogger(__name__)
 
 

@@ -28,7 +28,7 @@ from models import ATSScoreResult, ExtractedSkills, FullAnalysisResult, JobMatch
 from pdf_extractor import PDFExtractionError, extract_text_from_bytes, get_page_count
 from skill_extractor import extract_skills
 
-load_dotenv()
+load_dotenv(override=True)
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
 
@@ -94,12 +94,12 @@ async def _read_and_validate_pdf(file: UploadFile) -> bytes:
 
 @app.get("/health", tags=["System"])
 def health_check():
-    """Check if the API is running and the OpenAI key is configured."""
-    api_key_set = bool(os.getenv("OPENAI_API_KEY"))
+    """Check if the API is running and the Groq API key is configured."""
+    api_key_set = bool(os.getenv("GROQ_API_KEY"))
     return {
         "status": "ok",
         "api_key_configured": api_key_set,
-        "message": "Ready" if api_key_set else "Warning: OPENAI_API_KEY not set",
+        "message": "Ready" if api_key_set else "Warning: GROQ_API_KEY not set",
     }
 
 

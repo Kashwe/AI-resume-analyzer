@@ -15,5 +15,8 @@ python-multipart==0.0.20
 # Data Validation & Structured Output
 pydantic==2.11.4
 
+# HTTP Client
+requests==2.32.3
+
 # Environment & Utilities
 python-dotenv==1.1.0

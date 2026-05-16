@@ -23,7 +23,7 @@ from langchain_groq import ChatGroq
 
 from models import ATSScoreResult
 
-load_dotenv()
+load_dotenv(override=True)
 logger = logging.getLogger(__name__)
 
 
