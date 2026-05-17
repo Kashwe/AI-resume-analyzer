@@ -49,10 +49,22 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Allow the frontend (running on any port locally) to call the API
+# ── CORS ──────────────────────────────────────────────────────────────────────
+# Read allowed origins from env var (comma-separated) so you can configure
+# this per-environment without touching code.
+# Example in Azure App Service → Configuration → App settings:
+#   ALLOWED_ORIGINS=https://white-sea-03ffeb40f.7.azurestaticapps.net,https://my-other-domain.com
+#
+# Falls back to your known Static Web App URL if the env var is not set.
+_raw_origins = os.getenv(
+    "ALLOWED_ORIGINS",
+    "https://white-sea-03ffeb40f.7.azurestaticapps.net",
+)
+ALLOWED_ORIGINS: list[str] = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://white-sea-03ffeb40f.7.azurestaticapps.net"],  # Restrict to specific domains in production
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -99,6 +111,7 @@ def health_check():
     return {
         "status": "ok",
         "api_key_configured": api_key_set,
+        "allowed_origins": ALLOWED_ORIGINS,
         "message": "Ready" if api_key_set else "Warning: GROQ_API_KEY not set",
     }
 
