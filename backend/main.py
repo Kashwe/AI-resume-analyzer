@@ -52,7 +52,7 @@ app = FastAPI(
 # Allow the frontend (running on any port locally) to call the API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Restrict to specific domains in production
+    allow_origins=["https://white-sea-03ffeb40f.7.azurestaticapps.net"],  # Restrict to specific domains in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
